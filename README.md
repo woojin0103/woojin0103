@@ -2,6 +2,8 @@
 
 ### I am AI softengineer in Shingu college
 
+###안녕하세요 정우진 학생입니다.
+
 <!--
 **woojin0103/woojin0103** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
