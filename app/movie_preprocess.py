@@ -21,7 +21,7 @@ rating_df['movieId'] = rating_df['movieId'].astype(str)
 agg_df = rating_df.groupby('movieId').agg(rcount = ('rating','count'), rmean=('rating','mean'))
 print(agg_df)
 merged_df = merged_df.merge(agg_df, on='movieId')
-print(merged_df)
+print('merged_df')
 print(merged_df.columns)
 
 # step 4 포스터 경로 추가
@@ -31,12 +31,12 @@ from tqdm import tqdm
 def add_poster(df):
     for i ,row in tqdm(df.iterrows(), total=df.shape[0]):
         tmdb_id = row['tmdbId']
-        tmdb_url = f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=0000&language=en-US"
+        tmdb_url = f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key=256d229ec8db31e8fe5a385ac8a501c5&language=en-US"
         result = requests.get(tmdb_url)
         try:
             df.at[i,"poster_path"] = "https://image.tmdb.org/t/p/original" + result.json()['poster_path']
         except(TypeError, KeyError) as e:
-            df.at[i,"poster_path"] = "https://image.tmdb.org/t/p/original"
+            df.at[i,"poster_path"] = "https://image.tmdb.org/t/p/original/256d229ec8db31e8fe5a385ac8a501c5.jpg"
     return df
 
 merged_df['poster_path'] = None
